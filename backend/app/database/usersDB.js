@@ -1,4 +1,5 @@
 const DB = require('./index');
+const bcrypt = require('bcrypt');
 const tableName = 'users';
 
 class UsersDB {
@@ -14,8 +15,10 @@ class UsersDB {
     return DB.getBy(tableName,'role','employee');
   }
 
-  static insertUser(valuesObj) {
-    return DB.insertItem(tableName,valuesObj);
+  static insertUser(user) {
+    const rounds = 10;
+    const hash = bcrypt.hashSync(user.password, rounds);
+    return DB.insertItem(tableName,{...user,password: hash});
   }
 }
 

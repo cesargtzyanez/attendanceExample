@@ -1,7 +1,8 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(64),
-  role VARCHAR(16)
+  role VARCHAR(16),
+  password VARCHAR(120)
 );
 
 INSERT INTO users(username, role) VALUES('adminA','admin');

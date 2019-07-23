@@ -1,7 +1,7 @@
-CREATE TABLE events(
+CREATE TABLE reports(
   id SERIAL PRIMARY KEY,
-  "eventDate" TIMESTAMP NOT NULL,
-  "eventType" VARCHAR(16),
+  "reportDate" TIMESTAMP NOT NULL,
+  "reportType" VARCHAR(16),
   "userId" INTEGER,
   FOREIGN KEY ("userId") REFERENCES users(id)
 )
