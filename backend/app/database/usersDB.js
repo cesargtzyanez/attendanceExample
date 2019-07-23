@@ -7,6 +7,10 @@ class UsersDB {
     return DB.getAll(tableName);
   }
 
+  static getUserByEmail(email) {
+    return DB.getBy(tableName,'email',email);
+  }
+
   static getAdmins() {
     return DB.getBy(tableName,'role','admin');
   }
