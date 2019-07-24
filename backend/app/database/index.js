@@ -40,7 +40,7 @@ class DB {
 
   static insertItem(table, params) {
     const valuesIndexes = Object.keys(params).map((param,index) => '$'+(index + 1) ).toString();
-    const columns = Object.keys(params).toString();
+    const columns = Object.keys(params).toString().split(',').map(column => `"${column}"`).join(','); // This is for keep camelCase columns names
     const values = Object.values(params);
     const query = `INSERT INTO ${table}(${columns}) VALUES (${valuesIndexes}) RETURNING *`;
 
