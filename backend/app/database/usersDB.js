@@ -19,7 +19,7 @@ class UsersDB {
     return DB.getBy(tableName,'role','employee');
   }
 
-  static insertUser(user) {
+  static createUser(user) {
     return this.getUserByEmail(user.email)
         .then((resp)=>{
           if (!resp.length) {
