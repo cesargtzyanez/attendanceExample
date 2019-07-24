@@ -6,24 +6,23 @@ const userDB = require('../database/usersDB');
 
 const router = new Router();
 
-router.post('/login', function(req, res) {
+router.post('/login', function (req, res) {
   console.log('REQUEST HERE:', req.body);
-  userDB.getUserByEmail(req.body.username).then((resp) => {
+  userDB.getUserByEmail(req.body.email)
+      .then((resp) => {
+        console.log('User found:',resp);
         if (!resp.length) {
           return res.status(401).send({
             message: 'Authentication failed. User not found.',
           });
         }
 
-        console.log('USER: ', resp[0]);
-        console.log('PW: ', req.body.password);
-
         bcrypt.compare(req.body.password, resp[0].password).then(resPw => {
-            if (resPw) {
-              res.json({success: true});
-            } else {
-              res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
-            }
+          if (resPw) {
+            res.json({success: true});
+          } else {
+            res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+          }
         });
       })
       .catch((error) => {

@@ -20,9 +20,17 @@ class UsersDB {
   }
 
   static insertUser(user) {
-    const rounds = 10;
-    const hash = bcrypt.hashSync(user.password, rounds);
-    return DB.insertItem(tableName,{...user,password: hash});
+    return this.getUserByEmail(user.email)
+        .then((resp)=>{
+          if (!resp.length) {
+            const rounds = 10;
+            const hash = bcrypt.hashSync(user.password, rounds);
+            return DB.insertItem(tableName,{...user,password: hash});
+          } else {
+            return console.log('Error: There is already a user with the email:', user.email);
+          }
+
+        }).catch(error=> console.log('Error Inserting User:', error));
   }
 }
 

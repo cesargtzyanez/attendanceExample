@@ -1,15 +1,39 @@
 const usersDb = require('./app/database/usersDB');
 
-const userTest = {
-  username: 'cesar test',
-  role: 'employee',
-  email: 'cesarmail',
-  password: 'cesar'
-};
-const test = function() {
-  usersDb.insertUser(userTest).then(res => {
-    console.log('ADDED!');
-  }).catch(error => console.log('valio server', error));
+const usersTest = [
+  {
+    username: 'Karla',
+    role: 'admin',
+    email: 'karla@email',
+    password: 'karlapwd'
+  },
+  {
+    username: 'Leonardo',
+    role: 'employee',
+    email: 'leo@email',
+    password: 'leopwd'
+  },
+  {
+    username: 'Constanza',
+    role: 'employee',
+    email: 'constanza@email',
+    password: 'constanzapwd'
+  },
+  {
+    username: 'César',
+    role: 'admin',
+    email: 'cesar@email',
+    password: 'cesarpwd'
+  }
+];
+const test = function () {
+
+  usersTest.forEach(function (user) {
+    usersDb.insertUser(user).then(res => {
+      if (res) console.log('User', res[0].username,'added!');
+    }).catch(error => console.log('Error:', error));
+  });
+
 };
 
 module.exports = test;
