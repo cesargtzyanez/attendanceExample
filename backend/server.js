@@ -2,6 +2,7 @@ const express = require('express');
 const usersRouter = require('./app/api/users');
 const api = require('./app/api');
 
+// Random test stuff module
 const test = require('./test');
 test();
 
