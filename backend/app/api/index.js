@@ -1,7 +1,5 @@
 const {Router} = require('express');
 const bcrypt = require('bcrypt');
-var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
 const userDB = require('../database/usersDB');
 
 const router = new Router();

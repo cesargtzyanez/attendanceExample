@@ -49,7 +49,7 @@ const test = function () {
       };
 
       reportsDB.createReport(report)
-          .then(resp => console.log('Report created:', resp))
+          .then(resp => console.log('Report created'))
           .catch(error => console.log('Error creating report: ', error));
 
     }).catch(error => console.log('Error:', error));
