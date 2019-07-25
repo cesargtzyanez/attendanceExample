@@ -1,0 +1,22 @@
+{
+  "name": "attendanceExample",
+  "version": "1.0.0",
+  "description": "Example of attendance management using React and PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "nf start",
+    "backend": "npm restart-dev --prefix backend",
+    "frontend": "npm start --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesargtzyanez/attendanceExample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cesargtzyanez/attendanceExample/issues"
+  },
+  "homepage": "https://github.com/cesargtzyanez/attendanceExample#readme"
+}
