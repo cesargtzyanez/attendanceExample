@@ -1,3 +1,4 @@
+import axios from "axios";
 // ACTIONS
 import {GET_ALL} from "../actionTypes";
 
@@ -10,17 +11,18 @@ const initialState = {
 };
 
 // Actions Creators
-export function loadAllUsers() {
-  return {type: GET_ALL_USERS};
+export async function loadAllUsers() {
+  return await axios.get('http://localhost:3000/users')
+      .then(resp => resp)
+      .catch(error => error);
 }
 
 export default function reducer(state = initialState, action) {
-  //console.log(GET_ALL_USERS);
-  //console.log('here we come', action);
+  console.log('STATE CHANGED:', action);
   switch (action.type) {
     case GET_ALL_USERS:
       console.log('GETTING ALL ---->',action);
-      return Object.assign({}, {employees: action.employees});
+      return Object.assign({}, {employees: []});
     default:
       return state;
   }
